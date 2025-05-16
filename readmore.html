@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtS Wave - Expanded Introduction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+         :root {
+            --primary-font: 'Poppins', sans-serif;
+            --accent-color: #2C3E50;
+            --text-color: #333;
+            --background-color: #F4F4F4;
+            --white: #FFFFFF;
+            --highlight-color: #00c2cb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--primary-font);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .header {
+            display: flex;
+            animation: fadeIn 0.8s ease forwards;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 28px;
+            background-color: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 45px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            position: relative;
+            font-size: 15px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 2px;
+            background-color: var(--highlight-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin-top: 120px;
+            /* Adjusted for fixed header */
+            margin-bottom: 40px;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .read-more-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .content-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .content-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .paragraph {
+            font-size: 1.125rem;
+            color: #555;
+        }
+        
+        .shop-button {
+            display: inline-flex;
+            /* Use flexbox for alignment */
+            align-items: center;
+            /* Center items vertically */
+            margin-top: 20px;
+            /* Space above button */
+            padding: 12px 24px;
+            /* Padding for button */
+            background-color: var(--highlight-color);
+            /* Default background color */
+            color: var(--white);
+            /* Default text color */
+            text-decoration: none;
+            /* No underline */
+            border-radius: 10px;
+            /* Rounded edges */
+            border-width: 2px;
+            /* Border width */
+            border-style: solid;
+            /* Border style */
+            border-color: transparent;
+            /* No border color */
+            font-weight: 600;
+            /* Font weight */
+            font-size: 1rem;
+            /* Font size */
+            transition: all .3s ease;
+            /* Smooth transitions */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            /* Subtle shadow */
+        }
+        
+        .shop-button i {
+            margin-left: 8px;
+            /* Space between text and icon */
+            transition: transform .3s ease;
+            /* Smooth transition for icon */
+        }
+        
+        .shop-button:hover {
+            background-color: var(--white);
+            /* Background on hover */
+            color: var(--highlight-color);
+            /* Text color on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
+            /* Increased shadow on hover */
+        }
+        
+        .shop-button:hover i {
+            transform: translateX(4px);
+            /* Move arrow slightly on hover */
+        }
+        
+        @media (max-width :768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: .5rem;
+            }
+            .read-more-content {
+                grid-template-columns: 1fr;
+                margin-top: 1rem;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+        </nav>
+        <div class="logo">ArtS Wave</div>
+    </header>
+
+    <div class="container">
+        <div class="read-more-content">
+            <div>
+                <img src="./assets/images/f.jpg" alt="ArtSite Studio" class="content-image">
+            </div>
+            <div class="content-text">
+                <h1 class="section-title">Our Artistic Journey</h1>
+                <p class="paragraph">At ArtS Wave, we believe in the transformative power of art to inspire and connect people.</p>
+                <p class="paragraph">Our platform showcases a diverse collection that spans digital creations to contemporary expressions, each piece telling its own unique story.</p>
+                <p class="paragraph">We're not just a marketplace; we're a vibrant community for art enthusiasts to explore and engage with creativity.</p>
+                <a href="index.html#art-categories" class="shop-button">Explore Our Collection <i class="fas fa-arrow-right"></i></a>
+                <!-- Button with arrow -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const shopLinks = document.querySelectorAll('a[href="index.html#art-categories"]');
+
+            shopLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    localStorage.setItem('scrollToArtCategories', 'true');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

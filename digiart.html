@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art | ArtSite</title>
+    <style>
+        /* Your existing styles remain exactly the same */
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .header {
+            display: flex;
+            animation: fadeIn 0.8s ease forwards;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13.5px 28px;
+            background-color: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 45px;
+        }
+        
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 2px;
+            background-color: #00c2cb;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #00c2cb;
+        }
+        
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 2rem;
+        }
+        
+        .art-item {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .art-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .art-image-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .art-image-container.vertical {
+            padding-top: 133.33%;
+        }
+        
+        .art-image-container.horizontal {
+            padding-top: 75%;
+        }
+        
+        .art-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .art-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .art-content {
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .art-item-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        .art-item-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00c2cb;
+            margin: 0.5rem 0;
+        }
+        
+        .art-item-price::before {
+            content: '$';
+            font-size: 1rem;
+            vertical-align: super;
+            margin-right: 2px;
+        }
+        
+        .art-item-cta {
+            display: inline-block;
+            background-color: #00c2cb;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #00c2cb;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .art-item-cta:hover {
+            background-color: #fff;
+            color: #00c2cb;
+        }
+        
+        .cart-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            transition: transform 0.2s ease;
+        }
+        
+        .cart-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        
+        .cart-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #333;
+            stroke-width: 1.5;
+            transition: stroke 0.2s ease;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #333;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+            transform: scale(0);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .cart-count.has-items {
+            transform: scale(1);
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .art-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .art-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#art-categories" class="nav-link">Shop</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+        <div class="logo">ArtS Wave</div>
+        <div class="nav-actions">
+            <button class="cart-btn" aria-label="Shopping cart" onclick="location.href='cart.html'">
+                <div class="cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 7H20L19 19H5L4 7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">Digital Art</h1>
+
+        <div class="art-grid">
+            <!-- Art Piece 1 -->
+            <div class="art-item">
+                <div class="art-image-container vertical">
+                    <a href="https://ibb.co/Cs70GFkD"><img src="https://i.ibb.co/sJw3Yr0z/dg1.jpg" alt="Vibrant Abstract Painting" border="0"></a>
+                </div>
+                <div class="art-content">
+                    <h3 class="art-item-title">Vibrant Abstract Painting</h3>
+
+                    <a href="#" class="art-item-cta">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Art Piece 2 -->
+            <div class="art-item">
+                <div class="art-image-container horizontal">
+                    <a href="https://imgbb.com/"><img src="https://i.ibb.co/bgDkfWXH/dg2.jpg" alt="Mountain Landscape" border="0"></a>
+                </div>
+                <div class="art-content">
+                    <h3 class="art-item-title">Mountain Landscape</h3>
+
+                    <a href="#" class="art-item-cta">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Art Piece 3 -->
+            <div class="art-item">
+                <div class="art-image-container horizontal">
+                    <a href="https://imgbb.com/"><img src="https://i.ibb.co/TBSSLz8k/dg3.jpg" alt="Minimalist Line Art" border="0"></a>
+                </div>
+                <div class="art-content">
+                    <h3 class="art-item-title">Minimalist Line Art</h3>
+
+                    <a href="#" class="art-item-cta">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Art Piece 4 -->
+            <div class="art-item">
+                <div class="art-image-container vertical">
+                    <a href="https://ibb.co/tNr2Krg"><img src="https://i.ibb.co/5zHj4Hm/v4.png" alt="Abstract Geometric" border="0"></a>
+                </div>
+                <div class="art-content">
+                    <h3 class="art-item-title">Abstract Geometric</h3>
+
+                    <a href="#" class="art-item-cta">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Art Piece 5 -->
+            <div class="art-item">
+                <div class="art-image-container vertical">
+                    <a href="https://ibb.co/20jVXnd6"><img src="https://i.ibb.co/hxKQp7VM/dg5.jpg" alt="Urban Graffiti" border="0"></a>
+                </div>
+                <div class="art-content">
+                    <h3 class="art-item-title">Urban Graffiti</h3>
+
+                    <a href="#" class="art-item-cta">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Art Piece 6 -->
+            <div class="art-item">
+                <div class="art-image-container horizontal">
+                    <a href="https://imgbb.com/"><img src="https://i.ibb.co/ks5KxLSd/dg6.jpg" alt="dg6" border="0"></a>
+                </div>
+                <div class="art-content">
+                    <h3 class="art-item-title">Space Exploration</h3>
+
+                    <a href="#" class="art-item-cta">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CartSystem = {
+            // Get cart count from localStorage or initialize to 0
+            getCartCount: function() {
+                return parseInt(localStorage.getItem('artSiteCartCount')) || 0;
+            },
+
+            // Update cart count in localStorage and UI
+            updateCartCount: function(newCount) {
+                localStorage.setItem('artSiteCartCount', newCount.toString());
+                this.updateAllCartDisplays();
+            },
+
+            // Update all cart displays on the page
+            updateAllCartDisplays: function() {
+                const cartCount = this.getCartCount();
+                const cartCountElements = document.querySelectorAll('.cart-count');
+
+                cartCountElements.forEach(element => {
+                    element.textContent = cartCount;
+                    if (cartCount > 0) {
+                        element.classList.add('has-items');
+                    } else {
+                        element.classList.remove('has-items');
+                    }
+                });
+            },
+
+            // Add item to cart
+            addToCart: function(event) {
+                event.preventDefault();
+
+                // Get the parent art-item element
+                const artItem = event.target.closest('.art-item');
+                const itemDetails = {
+                    title: artItem.querySelector('.art-item-title').textContent,
+
+                    image: artItem.querySelector('img').src,
+                    quantity: 1
+                };
+
+                // Get existing cart from localStorage or initialize as an empty array
+                let cart = JSON.parse(localStorage.getItem('artSiteCart')) || [];
+
+                // Check if the item already exists in the cart
+                const existingItemIndex = cart.findIndex(item => item.title === itemDetails.title);
+                if (existingItemIndex !== -1) {
+                    // If item exists, update its quantity
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    // If item does not exist, add it to the cart
+                    cart.push(itemDetails);
+                }
+
+                // Save updated cart back to localStorage
+                localStorage.setItem('artSiteCart', JSON.stringify(cart));
+
+                // Update cart count
+                this.updateCartCount(cart.reduce((total, item) => total + item.quantity, 0));
+            },
+
+            // Clear cart
+            clearCart: function() {
+                this.updateCartCount(0);
+                localStorage.removeItem('artSiteCart');
+            },
+
+            // Initialize cart functionality
+            initialize: function() {
+                // Update cart displays when the page loads
+                this.updateAllCartDisplays();
+
+                // Attach event listeners to cart buttons only once
+                const addToCartButtons = document.querySelectorAll('.art-item-cta');
+                addToCartButtons.forEach(button => {
+                    button.addEventListener('click', (e) => this.addToCart(e));
+                });
+            }
+        };
+
+        // Initialize cart system when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => CartSystem.initialize());
+    </script>
+    <script src="./assets/js/cart-system.js"></script>
+</body>
+
+</html>

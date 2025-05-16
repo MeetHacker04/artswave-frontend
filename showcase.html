@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Showcase</title>
+    <link rel="stylesheet" href="./assets/css/showcase.css">
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: cursive;
+        box-sizing: border-box;
+    }
+    
+    .flex-container {
+        width: 100%;
+        height: auto;
+    }
+    
+    .art-container {
+        width: 200px;
+        height: 200px;
+        color: rgb(134, 187, 247, 0.5);
+    }
+</style>
+
+<body>
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src=" D:\art waves\bg video02.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <header>
+        <h1>Art Showcase</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#cart">Cart (<span id="cartCount">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Welcome to the Art Showcase</h2>
+        <p>Explore the beauty of art from various artists.</p>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <div class="art-container">
+                <img src="./assets/images/abc.jpeg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="./assets/images/Rainbow Kittens, Painting by Olga Matyunina _ Artmajeur.jpg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="./assets/images/tree.jpg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="./assets/images/Art Canvas Painting_ Explore a World of Masterful Creations.jpg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="./assets/images/abc.jpeg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="./assets/images/abc (2).jpeg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="backgroung01.jpg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="Beautiful Watercolor Painting References - Beautiful Dawn Designs.jpg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+            <div class="art-container">
+                <img src="Art Canvas Painting_ Explore a World of Masterful Creations.jpg" alt="Art Description" class="art-image">
+                <p class="art-title">Art Title</p>
+                <p class="art-price">$100</p>
+                <button class="buy-button">Buy</button>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
+
+
+
+
+
+        </div>
+        <!-- Add more art pieces here -->
+        </div>
+    </section>
+
+
+
+
+    <script src="./assets/js/cart-system.js"></script>
+
+    <script src="alert.js"></script>
+    <!-- This is where you link the JavaScript file -->
+</body>
+
+</html>

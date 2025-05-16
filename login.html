@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./assets/css/oglogin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="login-form" onsubmit="loginUser(event)">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+    <script>
+        async function loginUser(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('https://artswave-backend.onrender.com/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username,
+                        password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('isLoggedIn', 'true');
+                    alert('Login successful!');
+                    const redirectPage = localStorage.getItem('redirectAfterLogin') || 'index.html';
+                    localStorage.removeItem('redirectAfterLogin');
+                    window.location.href = redirectPage;
+                } else {
+                    alert(data.message || 'Login failed');
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('An error occurred during login');
+            }
+        }
+    </script>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

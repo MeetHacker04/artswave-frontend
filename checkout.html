@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - ArtsWave</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        
+        .cart-item span {
+            font-size: 16px;
+        }
+        
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #555;
+        }
+        
+        .empty {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 40px;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Checkout</h2>
+
+        <div id="cart-summary">
+            <!-- Cart items will be injected here -->
+        </div>
+
+        <form id="checkout-form">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" required placeholder="you@example.com" />
+            <div id="email-error" class="error"></div>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        // Initialize EmailJS
+        emailjs.init({
+            publicKey: "ddRJwyyrVnknRTH-V"
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = JSON.parse(localStorage.getItem('artSiteCart')) || [];
+            const summaryEl = document.getElementById('cart-summary');
+            const form = document.getElementById('checkout-form');
+
+            function displayCart() {
+                if (cart.length === 0) {
+                    summaryEl.innerHTML = "<p class='empty'>Your cart is empty.</p>";
+                    form.style.display = 'none';
+                    return;
+                }
+
+                cart.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `<span>${item.title} (x${item.quantity})</span>`;
+                    summaryEl.appendChild(div);
+                });
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+
+                if (!email) {
+                    alert("Please enter a valid email address.");
+                    return;
+                }
+
+                const artsHtml = cart.map(item =>
+                    `<p><strong>${item.title}</strong><br>
+                 Quantity: ${item.quantity}<br>
+                 <img src="${item.image}" width="100" alt="${item.title}" /></p>`
+                ).join('');
+
+                const params = {
+                    email: email,
+                    arts: artsHtml,
+                    total_items: cart.reduce((sum, item) => sum + item.quantity, 0)
+                };
+
+                console.log("📦 arts data being sent:", params);
+
+                emailjs.send('service_dm02ume', 'template_ijnwq2a', params)
+                    .then(() => {
+                        alert("✅ Order submitted! Confirmation sent to " + email);
+                        localStorage.removeItem('artSiteCart');
+                        window.location.href = 'index.html';
+                    })
+                    .catch(error => {
+                        console.error("❌ Email error:", error);
+                        alert("Failed to send order. Error: " + error.text);
+                    });
+            });
+
+            displayCart();
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

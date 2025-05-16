@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Arts Wave</title>
+    <style>
+        :root {
+            --primary: #007B7F;
+            --primary-light: rgba(0, 123, 127, 0.1);
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(0, 123, 127, 0.05) 0%,
+                rgba(0, 123, 127, 0.02) 100%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .title {
+            text-align: center;
+            color: var(--text-dark);
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: black;
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            background: var(--bg-white);
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 123, 127, 0.1);
+        }
+
+        .submit-button {
+            background: #00c2cb;
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background: #009999;
+            transform: translateY(-1px);
+        }
+
+        .contact-info {
+            padding-top: 0.5rem;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color:black;
+            margin-bottom: 2rem;
+        }
+
+        .info-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-text {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00c2cb;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #009999;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Contact Us</h1>
+        <p class="subtitle">We appreciate clear communication. Share your thoughts with us.</p>
+        
+        <div class="contact-card">
+            <div class="contact-grid">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <h2 class="info-title">Get in Touch</h2>
+                    <div class="divider"></div>
+                    
+                    <div class="info-group">
+                        <div class="info-label">Email</div>
+                        <div class="info-text">hello@artswave.com</div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-label">Phone</div>
+                        <div class="info-text">(555) 555-5555</div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-label">Location</div>
+                        <div class="info-text">
+                            123 Art Street<br>
+                            Creative District<br>
+                            Design City, 12345
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

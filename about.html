@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ArtS Wave</title>
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Body Style */
+        body {
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 960px;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        /* Header Section */
+        .about-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 3rem;
+        }
+
+        .about-section {
+            padding: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            color: #00c2cb;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: left;
+            border-bottom: 2px solid #00c2cb;
+            padding-bottom: 5px;
+        }
+
+        .section-content {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-item {
+            padding: 2rem;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-item:hover {
+            border-color: #00c2cb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-number {
+            font-size: 1.8rem;
+            color: #00c2cb;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-title {
+                font-size: 2.4rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="about-header">
+            <h1 class="about-title">About Us</h1>
+            <p class="about-subtitle">Discover the story behind ArtS Wave and our commitment to bringing exceptional digital art to you.</p>
+        </header>
+
+        <!-- Content Grid Section -->
+        <div class="content-grid">
+            <div class="about-section">
+                <h2 class="section-title">Our Story</h2>
+                <p class="section-content">
+                    ArtS Wave was founded with a simple yet powerful vision: to make exceptional digital art accessible to everyone. We carefully curate our collection to bring you the most compelling and innovative digital artworks, ensuring each piece meets our high standards of quality and creativity.
+                </p>
+            </div>
+            <div class="about-section">
+                <h2 class="section-title">Our Mission</h2>
+                <p class="section-content">
+                    We strive to create a seamless platform where art enthusiasts can discover and acquire stunning digital artworks. Our focus is on providing a curated experience that celebrates creativity while ensuring the highest standards of quality and authenticity.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Grid Section -->
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-number">01</div>
+                <h3 class="feature-title">Curated Collection</h3>
+                <p class="feature-description">Carefully selected digital artworks that meet our quality standards.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-number">02</div>
+                <h3 class="feature-title">Secure Platform</h3>
+                <p class="feature-description">Safe and reliable platform for purchasing digital art.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-number">03</div>
+                <h3 class="feature-title">Quality Assurance</h3>
+                <p class="feature-description">Ensuring each artwork is of high quality and meets our artistic standards.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-number">04</div>
+                <h3 class="feature-title">Customer Support</h3>
+                <p class="feature-description">Dedicated support team to assist with your inquiries.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
